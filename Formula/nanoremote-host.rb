@@ -55,7 +55,7 @@ class NanoremoteHost < Formula
 
   # brew services — run via the .app bundle so macOS shows the correct icon
   service do
-    run [prefix/"NanoRemote Host.app/Contents/MacOS/nano-remote-host",
+    run [opt_prefix/"NanoRemote Host.app/Contents/MacOS/nano-remote-host",
          "--mode", "jpeg", "--display", "0"]
     keep_alive true
     log_path var/"log/nanoremote-host.log"
