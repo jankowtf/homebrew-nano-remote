@@ -1,10 +1,9 @@
 class NanoremoteHost < Formula
   desc "NanoRemote Host - macOS remote desktop server"
-  homepage "https://gitlab.kaosmaps.com/kaosmaps/nano-remote"
-  url "https://gitlab.kaosmaps.com/kaosmaps/nano-remote/-/archive/v0.0.1/nano-remote-v0.0.1.tar.gz"
+  homepage "https://github.com/jankowtf/nano-remote"
+  url "https://github.com/jankowtf/nano-remote/archive/refs/tags/v0.0.1.tar.gz"
   version "0.0.1"
-  # sha256 will be filled after first GitLab release is published
-  sha256 "e580917aa3f1ce8e101a6198f3943a75ef06d82d55a8b6e17b937b2e0d5f214c"
+  sha256 "a989ec816a99bb5e13d57fcf79c42b4694cc3d101047968ca1ff1d22ff732e7d"
   license "MIT"
 
   depends_on :macos => :sonoma # macOS 14+ required (ScreenCaptureKit APIs)
