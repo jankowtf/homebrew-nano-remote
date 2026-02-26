@@ -1,6 +1,6 @@
 class NanoremoteHost < Formula
   desc "NanoRemote Host - macOS remote desktop server"
-  homepage "https://github.com/jankowtf/nano-remote"
+  homepage "https://github.com/jankowtf/homebrew-nano-remote"
   version "0.0.1"
   license "MIT"
 
@@ -8,11 +8,15 @@ class NanoremoteHost < Formula
 
   on_arm do
     url "https://github.com/jankowtf/homebrew-nano-remote/releases/download/v0.0.1/nano-remote-host-0.0.1-arm64-macos.tar.gz"
-    sha256 "3bb28bae98692781eb9fb09583a6120727af6c0730917429d5e1e2cf66bdf308"
+    sha256 "914e21815cc5faf9e34556d7114abeb617f1e8f14b6470f4926bbe1622b5fa01"
   end
 
   def install
-    bin.install "nano-remote-host"
+    # Install the .app bundle (contains Info.plist + icon for macOS Settings)
+    prefix.install "NanoRemote Host.app"
+
+    # Symlink the binary so it's available on PATH
+    bin.install_symlink prefix/"NanoRemote Host.app/Contents/MacOS/nano-remote-host"
   end
 
   def caveats
@@ -49,9 +53,10 @@ class NanoremoteHost < Formula
     EOS
   end
 
-  # brew services integration — generates and manages the LaunchAgent plist
+  # brew services — run via the .app bundle so macOS shows the correct icon
   service do
-    run [opt_bin/"nano-remote-host", "--mode", "jpeg", "--display", "0"]
+    run [prefix/"NanoRemote Host.app/Contents/MacOS/nano-remote-host",
+         "--mode", "jpeg", "--display", "0"]
     keep_alive true
     log_path var/"log/nanoremote-host.log"
     error_log_path var/"log/nanoremote-host.error.log"
