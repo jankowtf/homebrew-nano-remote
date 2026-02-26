@@ -7,21 +7,25 @@ class NanoremoteHost < Formula
   license "MIT"
 
   depends_on :macos => :sonoma # macOS 14+ required (ScreenCaptureKit APIs)
+  depends_on :xcode => ["15.0", :build] # Swift toolchain for screencapturekit crate
 
   # Rust is required to build from source
   depends_on "rust" => :build
 
+  # The screencapturekit crate compiles Swift via SwiftPM, which needs
+  # access to the Xcode toolchain outside Homebrew's sandbox.
+  env :std
+
   def install
+    # Ensure Xcode SDK is available for the Swift bridge
+    ENV["SDKROOT"] = MacOS.sdk_path.to_s
+
     # Build the host binary from source
     system "cargo", "build", "--release", "-p", "nano-remote-host"
     bin.install "target/release/nano-remote-host"
 
     # Install the viewer web files (served alongside the host)
-    (share/"nanoremote/viewer-web").install Dir["viewer-web/*"]
-
-    # Install LaunchAgent plist into the formula prefix so
-    # `brew services` can manage it via the service block below
-    # The plist is also available at opt_prefix for manual installs
+    (share/"nanoremote/viewer-web").install Dir["viewer-web/*"] if Dir.exist?("viewer-web")
   end
 
   def caveats
