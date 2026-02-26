@@ -8,7 +8,7 @@ class NanoremoteHost < Formula
 
   on_arm do
     url "https://github.com/jankowtf/homebrew-nano-remote/releases/download/v0.0.1/nano-remote-host-0.0.1-arm64-macos.tar.gz"
-    sha256 "914e21815cc5faf9e34556d7114abeb617f1e8f14b6470f4926bbe1622b5fa01"
+    sha256 "cea80f189224191f2a5f7045e3900d3adbaa9c484cd5f1ff7d82b63b2ea59f9f"
   end
 
   def install
