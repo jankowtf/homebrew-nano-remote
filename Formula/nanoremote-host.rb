@@ -19,6 +19,8 @@ class NanoremoteHost < Formula
   def install
     # Ensure Xcode SDK is available for the Swift bridge
     ENV["SDKROOT"] = MacOS.sdk_path.to_s
+    # SwiftPM uses sandbox-exec which fails under Homebrew's build env on Tahoe+
+    ENV["SWIFTPM_DISABLE_SANDBOX"] = "1"
 
     # Build the host binary from source
     system "cargo", "build", "--release", "-p", "nano-remote-host"
