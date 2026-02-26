@@ -4,7 +4,7 @@ class NanoremoteHost < Formula
   url "https://gitlab.kaosmaps.com/kaosmaps/nano-remote/-/archive/v0.0.1/nano-remote-v0.0.1.tar.gz"
   version "0.0.1"
   # sha256 will be filled after first GitLab release is published
-  sha256 "bd208eb91d0b7c7d37d0d760d312aea7a745307d9f488faaed3e62093c845b32"
+  sha256 "e580917aa3f1ce8e101a6198f3943a75ef06d82d55a8b6e17b937b2e0d5f214c"
   license "MIT"
 
   depends_on :macos => :sonoma # macOS 14+ required (ScreenCaptureKit APIs)
