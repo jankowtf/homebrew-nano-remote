@@ -7,7 +7,7 @@ class NanoremoteHost < Formula
   depends_on :macos => :sonoma # macOS 14+ required (ScreenCaptureKit APIs)
 
   on_arm do
-    url "https://github.com/jankowtf/nano-remote/releases/download/v0.0.1/nano-remote-host-0.0.1-arm64-macos.tar.gz"
+    url "https://github.com/jankowtf/homebrew-nano-remote/releases/download/v0.0.1/nano-remote-host-0.0.1-arm64-macos.tar.gz"
     sha256 "3bb28bae98692781eb9fb09583a6120727af6c0730917429d5e1e2cf66bdf308"
   end
 
